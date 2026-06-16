@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nkanyezi Mtimkulu | Portfolio</title>
+    <link rel="stylesheet" href="[cdnjs.cloudflare.com](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css)">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #fafafa;
+            color: #262626;
+            min-height: 100vh;
+        }
+
+        /* ========== NAVBAR ========== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: white;
+            border-bottom: 1px solid #dbdbdb;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .navbar-brand {
+            font-family: 'Segoe Script', 'Brush Script MT', cursive;
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: #262626;
+            text-decoration: none;
+        }
+
+        /* ========== MAIN CONTAINER ========== */
+        .container {
+            max-width: 935px;
+            margin: 0 auto;
+            padding: 90px 20px 30px;
+        }
+
+        /* ========== PROFILE HEADER ========== */
+        .profile-header {
+            display: flex;
+            gap: 30px;
+            padding: 30px 0;
+            border-bottom: 1px solid #dbdbdb;
+            margin-bottom: 20px;
+        }
+
+        .profile-pic-container {
+            flex-shrink: 0;
+        }
+
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid transparent;
+            background: linear-gradient(white, white) padding-box,
+                        linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5) border-box;
+        }
+
+        .profile-info {
+            flex: 1;
+        }
+
+        .profile-username {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .profile-username h1 {
+            font-size: 1.75rem;
+            font-weight: 300;
+        }
+
+        .follow-btn {
+            background: #0095f6;
+            color: white;
+            border: none;
+            padding: 8px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .follow-btn:hover {
+            background: #1877f2;
+        }
+
+        .profile-stats {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 20px;
+        }
+
+        .profile-stats span {
+            font-size: 1rem;
+        }
+
+        .profile-stats strong {
+            font-weight: 600;
+        }
+
+        .profile-bio h2 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .profile-bio p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #262626;
+        }
+
+        .profile-bio a {
+            color: #00376b;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .profile-bio a:hover {
+            text-decoration: underline;
+        }
+
+        /* ========== STORIES (HIGHLIGHTS) ========== */
+        .stories-section {
+            padding: 20px 0;
+            border-bottom: 1px solid #dbdbdb;
+        }
+
+        .stories-container {
+            display: flex;
+            gap: 25px;
+            overflow-x: auto;
+            padding: 10px 0;
+            scrollbar-width: none;
+        }
+
+        .stories-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .story {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #262626;
+            flex-shrink: 0;
+        }
+
+        .story-ring {
+            width: 77px;
+            height: 77px;
+            padding: 3px;
+            border-radius: 50%;
+            background: linear-gradient(white, white) padding-box,
+                        linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5) border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s;
+        }
+
+        .story:hover .story-ring {
+            transform: scale(1.05);
+        }
+
+        .story-ring.document {
+            background: linear-gradient(45deg, #405de6, #5851db, #833ab4);
+        }
+
+        .story-ring.social {
+            background: linear-gradient(45deg, #0077b5, #00a0dc, #0e76a8);
+        }
+
+        .story-inner {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid white;
+        }
+
+        .story-inner img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .story-inner i {
+            font-size: 1.8rem;
+            color: #262626;
+        }
+
+        .story p {
+            margin-top: 8px;
+            font-size: 0.75rem;
+            font-weight: 400;
+            max-width: 74px;
+            text-align: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        /* ========== POSTS NAVIGATION ========== */
+        .posts-nav {
+            display: flex;
+            justify-content: center;
+            border-bottom: 1px solid #dbdbdb;
+        }
+
+        .posts-nav-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 15px 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #8e8e8e;
+            border-top: 1px solid transparent;
+            margin-top: -1px;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .posts-nav-item.active {
+            color: #262626;
+            border-top: 1px solid #262626;
+        }
+
+        .posts-nav-item i {
+            font-size: 0.85rem;
+        }
+
+        /* ========== POSTS GRID ========== */
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            padding: 20px 0;
+        }
+
+        .post {
+            position: relative;
+            aspect-ratio: 1;
+            background: #f0f0f0;
+            border-radius: 4px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .post img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .post-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .post:hover .post-overlay {
+            opacity: 1;
+        }
+
+        .post:hover img {
+            transform: scale(1.05);
+        }
+
+        .post-overlay h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .post-overlay p {
+            font-size: 0.8rem;
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+
+        .post-overlay .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            justify-content: center;
+        }
+
+        .post-overlay .tech-tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+        }
+
+        .post-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: white;
+            font-size: 1.2rem;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #8e8e8e;
+            font-size: 0.75rem;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            color: #8e8e8e;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 735px) {
+            .profile-header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .profile-pic {
+                width: 120px;
+                height: 120px;
+            }
+
+            .profile-username {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .profile-stats {
+                justify-content: center;
+            }
+
+            .posts-grid {
+                gap: 3px;
+            }
+
+            .post-overlay h3 {
+                font-size: 0.85rem;
+            }
+
+            .post-overlay p {
+                font-size: 0.7rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .posts-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2px;
+            }
+
+            .story-ring {
+                width: 62px;
+                height: 62px;
+            }
+
+            .story p {
+                font-size: 0.65rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="#" class="navbar-brand">Nkanyezi.dev</a>
+    </nav>
+
+    <!-- MAIN CONTAINER -->
+    <div class="container">
+
+        <!-- PROFILE HEADER -->
+        <header class="profile-header">
+            <div class="profile-pic-container">
+                <img src="MyPic.jpg" alt="Nkanyezi Mtimkulu" class="profile-pic">
+            </div>
+            <div class="profile-info">
+                <div class="profile-username">
+                    <h1>Nkanyezi_Mtimkulu</h1>
+                    <a href="mailto:your.email@example.com" class="follow-btn">Contact Me</a>
+                </div>
+                <div class="profile-stats">
+                    <span><strong>6</strong> projects</span>
+                    <span><strong>3</strong> certificates</span>
+                    <span><strong>∞</strong> curiosity</span>
+                </div>
+                <div class="profile-bio">
+                    <h2>Nkanyezi Happy-Angel Mtimkulu</h2>
+                    <p>🎓 BSc Mathematics & Mathematical Statistics</p>
+                    <p>💻 Software & Data Engineering Student</p>
+                    <p>🔧 Fixing broken data flows, one pipeline at a time</p>
+                    <p>📍 South Africa</p>
+                    <p><a href="https://github.com/Nkanyezi016" target="_blank">github.com/Nkanyezi016</a></p>
+                </div>
+            </div>
+        </header>
+
+        <!-- STORIES / HIGHLIGHTS SECTION -->
+        <section class="stories-section">
+            <div class="stories-container">
+                
+                <!-- GitHub Link -->
+                <a href="[github.com](https://github.com/Nkanyezi016)" target="_blank" class="story">
+                    <div class="story-ring social">
+                        <div class="story-inner">
+                            <i class="fab fa-github"></i>
+                        </div>
+                    </div>
+                    <p>GitHub</p>
+                </a>
+
+                <!-- LinkedIn Link -->
+                <a href="[linkedin.com](https://www.linkedin.com/in/yourprofile)" target="_blank" class="story">
+                    <div class="story-ring social">
+                        <div class="story-inner">
+                            <i class="fab fa-linkedin-in"></i>
+                        </div>
+                    </div>
+                    <p>LinkedIn</p>
+                </a>
+
+                <!-- CV Download -->
+                <a href="./documents/Nkanyezi_CV.pdf" download class="story">
+                    <div class="story-ring document">
+                        <div class="story-inner">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                    </div>
+                    <p>My CV</p>
+                </a>
+
+                <!-- Certificate 1 -->
+                <a href="./documents/certificate1.pdf" download class="story">
+                    <div class="story-ring document">
+                        <div class="story-inner">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                    </div>
+                    <p>Certificate 1</p>
+                </a>
+
+                <!-- Certificate 2 -->
+                <a href="./documents/certificate2.pdf" download class="story">
+                    <div class="story-ring document">
+                        <div class="story-inner">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                    </div>
+                    <p>Certificate 2</p>
+                </a>
+
+                <!-- Certificate 3 -->
+                <a href="./documents/certificate3.pdf" download class="story">
+                    <div class="story-ring document">
+                        <div class="story-inner">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                    </div>
+                    <p>Certificate 3</p>
+                </a>
+
+            </div>
+        </section>
+
+        <!-- POSTS NAVIGATION -->
+        <nav class="posts-nav">
+            <div class="posts-nav-item active">
+                <i class="fas fa-th"></i>
+                <span>Projects</span>
+            </div>
+        </nav>
+
+        <!-- POSTS GRID (Projects) -->
+        <section class="posts-grid">
+
+            <!-- Project 1: Robot Game -->
+            <article class="post">
+                <img src="[images.unsplash.com](https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&h=400&fit=crop)" alt="Robot Game">
+                <i class="fas fa-clone post-icon"></i>
+                <a href="[github.com](https://github.com/Nkanyezi016/MultiplayerRobotGame.git)" target="_blank" class="post-overlay">
+                    <h3>🤖 Robot Game</h3>
+                    <p>Multiplayer robot battle arena with strategic gameplay</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">Sockets</span>
+                        <span class="tech-tag">OOP</span>
+                    </div>
+                </a>
+            </article>
+
+            <!-- Project 2: Salon App -->
+            <article class="post">
+                <img src="[images.unsplash.com](https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400&h=400&fit=crop)" alt="Salon App">
+                <i class="fas fa-clone post-icon"></i>
+                <a href="[github.com](https://github.com/Nkanyezi016/Salon_Search_And_Booking.git)" target="_blank" class="post-overlay">
+                    <h3>💅 Salon App</h3>
+                    <p>Search and booking platform for beauty services</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">SQL</span>
+                    </div>
+                </a>
+            </article>
+
+            <!-- Project 3: Security App -->
+            <article class="post">
+                <img src="[images.unsplash.com](https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=400&h=400&fit=crop)" alt="Security App">
+                <i class="fas fa-clone post-icon"></i>
+                <a href="[github.com](https://github.com/Nkanyezi016/SecurityApp.git)" target="_blank" class="post-overlay">
+                    <h3>🛡️ Security App</h3>
+                    <p>Authentication and security management system</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Encryption</span>
+                        <span class="tech-tag">Auth</span>
+                    </div>
+                </a>
+            </article>
+
+            <!-- Project 4: Data Pipeline -->
+            <article class="post">
+                <img src="[images.unsplash.com](https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=400&fit=crop)" alt="Data Pipeline">
+                <i class="fas fa-clone post-icon"></i>
+                <a href="[github.com](https://github.com/Nkanyezi016)" target="_blank" class="post-overlay">
+                    <h3>📊 Data Pipeline</h3>
+                    <p>ETL pipeline for cleaning and transforming data</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Pandas</span>
+                        <span class="tech-tag">SQL</span>
+                    </div>
+                </a>
+            </article>
+
+            <!-- Project 5: API Service -->
+            <article class="post">
+                <img src="[images.unsplash.com](https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=400&fit=crop)" alt="API Service">
+                <i class="fas fa-clone post-icon"></i>
+                <a href="[github.com](https://github.com/Nkanyezi016)" target="_blank" class="post-overlay">
+                    <h3>🔗 REST API</h3>
+                    <p>RESTful API service with documentation</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                    </div>
+                </a>
+            </article>
+
+            <!-- Project 6: Analytics Dashboard -->
+            <article class="post">
+                <img src="[images.unsplash.com](https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=400&fit=crop)" alt="Analytics Dashboard">
+                <i class="fas fa-clone post-icon"></i>
+                <a href="[github.com](https://github.com/Nkanyezi016)" target="_blank" class="post-overlay">
+                    <h3>📈 Analytics</h3>
+                    <p>Interactive data visualization dashboard</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">D3.js</span>
+                        <span class="tech-tag">Charts</span>
+                    </div>
+                </a>
+            </article>
+
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="footer-links">
+                <a href="[github.com](https://github.com/Nkanyezi016)" target="_blank">GitHub</a>
+                <a href="[linkedin.com](https://www.linkedin.com/in/yourprofile)" target="_blank">LinkedIn</a>
+                <a href="mailto:your.email@example.com">Email</a>
+            </div>
+            <p>© 2026 Nkanyezi Mtimkulu. Built with ❤️ and CSS.</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>

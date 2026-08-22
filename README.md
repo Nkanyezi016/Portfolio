@@ -1,6 +1,6 @@
 # Personal Portfolio
 
-A modern, responsive personal portfolio website built with **React** and **Tailwind CSS** to showcase my projects, technical skills, academic background, and professional experience.
+A modern, responsive personal portfolio website built with **HTML,CSS and JavaScript** to showcase my projects, technical skills, academic background, and professional experience.
 
 ## 👩🏽‍💻 About Me
 

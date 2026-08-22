@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>nkanyezi.dev</title>
+  <link rel="stylesheet" href="stylePortfolio.css">
+</head>
+
+<body>
+    <!-- NAV -->
+    <nav>
+    <div class="nav-inner">
+    <a class="nav-logo" href="#">nkanyezi.dev</a>
+    <div class="nav-icons">
+        <!-- home icon -->
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>
+        <!-- search -->
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <!-- grid -->
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+    </div>
+    </div>
+    </nav>
+
+    <main>
+
+    <!-- PROFILE HEADER -->
+    <div class="profile-header">
+    <div class="avatar-wrap">
+        <div class="avatar-initials">NH</div>
+    </div>
+
+    <div class="profile-info">
+        <div class="profile-username">
+        nkanyezi_dev
+        <span class="badge">Open to Work</span>
+        </div>
+
+        <div class="profile-stats">
+        <div class="stat">
+            <span class="stat-num">6</span>
+            <span class="stat-label">projects</span>
+        </div>
+        <div class="stat">
+            <span class="stat-num">3</span>
+            <span class="stat-label">certs</span>
+        </div>
+        <div class="stat">
+            <span class="stat-num">∞</span>
+            <span class="stat-label">curiosity</span>
+        </div>
+        </div>
+
+        <div class="profile-name">Nkanyezi Happy-Angel Mtimkulu</div>
+        <div class="profile-bio">
+        BSc Mathematics &amp; Mathematical Statistics 🎓<br>
+        <span class="tag">#DataEngineering</span> <span class="tag">#SoftwareEngineering</span><br>
+        Fixing broken data flows · Building reliable tools · Learning fast
+        </div>
+        <div class="profile-location">📍 South Africa · Benoni, Gauteng</div>
+
+        <div class="profile-links">
+        <a href="https://www.linkedin.com/in/nkanyezi-mtimkulu" target="_blank" class="btn-follow">Connect on LinkedIn</a>
+        <a href="https://github.com/Nkanyezi016" target="_blank" class="btn-msg">GitHub</a>
+        </div>
+
+        <!-- Skills -->
+        <div class="skills-row" style="margin-top:14px">
+        <span class="skill-pill">Python</span>
+        <span class="skill-pill">SQL</span>
+        <span class="skill-pill">Java</span>
+        <span class="skill-pill">Data Engineering</span>
+        <span class="skill-pill">Statistics</span>
+        <span class="skill-pill">Git</span>
+        <span class="skill-pill">HTML/CSS</span>
+        </div>
+    </div>
+    </div>
+
+    <!-- STORIES ── Links + Downloadable Docs -->
+    <div class="stories-section">
+    <div class="stories-label">Links &amp; Documents</div>
+    <div class="stories-row">
+
+        <!-- GitHub -->
+        <a class="story-item" href="https://github.com/Nkanyezi016" target="_blank">
+        <div class="story-ring">
+            <div class="story-inner">🐙</div>
+        </div>
+        <span class="story-label">GitHub</span>
+        </a>
+
+        <!-- LinkedIn -->
+        <a class="story-item" href="https://www.linkedin.com/in/nkanyezi-mtimkulu" target="_blank">
+        <div class="story-ring">
+            <div class="story-inner">💼</div>
+        </div>
+        <span class="story-label">LinkedIn</span>
+        </a>
+
+        <!-- CV Download — replace href with actual path to your CV PDF -->
+        <a class="story-item" href="cv-nkanyezi-mtimkulu.pdf" download>
+        <div class="story-ring doc-ring">
+            <div class="story-inner">📄</div>
+        </div>
+        <span class="story-label">Download CV</span>
+        </a>
+
+        <!-- Certificate 1 — replace href with actual path -->
+        <a class="story-item" href="certificate-1.pdf" download>
+        <div class="story-ring doc-ring">
+            <div class="story-inner">🏅</div>
+        </div>
+        <span class="story-label">Cert · Math</span>
+        </a>
+
+        <!-- Certificate 2 -->
+        <a class="story-item" href="certificate-2.pdf" download>
+        <div class="story-ring doc-ring">
+            <div class="story-inner">🏅</div>
+        </div>
+        <span class="story-label">Cert · Data</span>
+        </a>
+
+        <!-- Certificate 3 -->
+        <a class="story-item" href="certificate-3.pdf" download>
+        <div class="story-ring doc-ring">
+            <div class="story-inner">🏅</div>
+        </div>
+        <span class="story-label">Cert · Dev</span>
+        </a>
+
+    </div>
+    </div>
+
+    <!-- TABS -->
+    <div class="tab-row">
+    <div class="tab active">
+        <!-- grid icon -->
+        <svg width="12" height="12" fill="currentColor" viewBox="0 0 12 12"><rect width="5" height="5" rx="0.5"/><rect x="7" width="5" height="5" rx="0.5"/><rect y="7" width="5" height="5" rx="0.5"/><rect x="7" y="7" width="5" height="5" rx="0.5"/></svg>
+        Posts
+    </div>
+    <div class="tab">
+        <!-- tag icon -->
+        <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+        Skills
+    </div>
+    </div>
+
+    <!-- POSTS GRID -->
+    <div class="posts-grid">
+
+    <!-- Project 1: Robot Game -->
+    <a class="post-card" href="https://github.com/Nkanyezi016/MultiplayerRobotGame.git" target="_blank">
+        <div class="post-bg">
+        <div class="post-emoji">🤖</div>
+        <div class="post-title">Multiplayer Robot Game</div>
+        </div>
+        <div class="post-overlay">
+        <div class="post-overlay-title">Multiplayer Robot Game</div>
+        <div class="post-overlay-sub">Real-time multiplayer game with robot battle mechanics</div>
+        <div class="post-overlay-link">View on GitHub →</div>
+        </div>
+    </a>
+
+    <!-- Project 2: Salon App -->
+    <a class="post-card" href="https://github.com/Nkanyezi016/SalonSearchAndBooking.git" target="_blank">
+        <div class="post-bg">
+        <div class="post-emoji">💅</div>
+        <div class="post-title">Salon Search &amp; Booking</div>
+        </div>
+        <div class="post-overlay">
+        <div class="post-overlay-title">Salon Search &amp; Booking</div>
+        <div class="post-overlay-sub">Search salons, view services, and book appointments</div>
+        <div class="post-overlay-link">View on GitHub →</div>
+        </div>
+    </a>
+
+    <!-- Project 3: Security App -->
+    <a class="post-card" href="https://github.com/Nkanyezi016" target="_blank">
+        <div class="post-bg">
+        <div class="post-emoji">🛡️</div>
+        <div class="post-title">Security App</div>
+        </div>
+        <div class="post-overlay">
+        <div class="post-overlay-title">Security App</div>
+        <div class="post-overlay-sub">Access control and security management system</div>
+        <div class="post-overlay-link">View on GitHub →</div>
+        </div>
+    </a>
+
+    <!-- Project 4 placeholder — replace with your next project -->
+    <a class="post-card" href="https://github.com/Nkanyezi016" target="_blank">
+        <div class="post-bg">
+        <div class="post-emoji">📊</div>
+        <div class="post-title">Data Pipeline</div>
+        </div>
+        <div class="post-overlay">
+        <div class="post-overlay-title">Data Pipeline</div>
+        <div class="post-overlay-sub">ETL pipeline for automated data processing and cleaning</div>
+        <div class="post-overlay-link">View on GitHub →</div>
+        </div>
+    </a>
+
+    <!-- Project 5 placeholder -->
+    <a class="post-card" href="https://github.com/Nkanyezi016" target="_blank">
+        <div class="post-bg">
+        <div class="post-emoji">🧮</div>
+        <div class="post-title">Stats Visualiser</div>
+        </div>
+        <div class="post-overlay">
+        <div class="post-overlay-title">Stats Visualiser</div>
+        <div class="post-overlay-sub">Interactive visualisations for mathematical statistics</div>
+        <div class="post-overlay-link">View on GitHub →</div>
+        </div>
+    </a>
+
+    <!-- Project 6 placeholder -->
+    <a class="post-card" href="https://github.com/Nkanyezi016" target="_blank">
+        <div class="post-bg">
+        <div class="post-emoji">⚙️</div>
+        <div class="post-title">Automation Tool</div>
+        </div>
+        <div class="post-overlay">
+        <div class="post-overlay-title">Automation Tool</div>
+        <div class="post-overlay-sub">Script that saves hours of repetitive manual work</div>
+        <div class="post-overlay-link">View on GitHub →</div>
+        </div>
+    </a>
+
+    </div>
+
+    </main>
+
+    <footer>
+    <p>© 2026 Nkanyezi Happy-Angel Mtimkulu &nbsp;·&nbsp; Built with ❤️ &amp; code &nbsp;·&nbsp;
+    <a href="mailto:nkanyezi@email.com" style="color:var(--ig-secondary)">nkanyezi@email.com</a>
+    </p>
+    </footer>
+
+</body>

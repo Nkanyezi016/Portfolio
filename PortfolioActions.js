@@ -92,4 +92,47 @@ const PROJECTS = [
       approach:"Building a lightweight mobile-first check: enter the details shown in your ride app, and cross-reference them in a focused, no-friction interface.",
       result:"A safety-first companion tool aimed at giving riders one extra layer of confidence on every trip."
     }
-  }]
+  },
+{
+    id:"downloadorg",
+    emoji:"🗂️",
+    title:"Smart Download Organizer",
+    caption:"A script that watches your Downloads folder and files everything away — automatically.",
+    hashtags:"#Python #Automation #ProductivityTool #FileSystem",
+    tech:["Python","File system automation"],
+    role:"Solo build",
+    status:"Complete",
+    github:"https://github.com/Nkanyezi016",
+    demo:null,
+    comments:[
+      {who:"nkanyezi.dev", text:"Sorts files into folders by type automatically the moment they land in Downloads — built this because I was tired of doing it by hand."},
+      {who:"code_reviewer", text:"Small tool, but this is the kind of automation that saves real hours over a year."},
+    ],
+    case:{
+      problem:"Downloads folders turn into digital junk drawers — screenshots, PDFs, installers, and archives all piling up in one place.",
+      approach:"Wrote a Python script that watches the Downloads folder and automatically sorts new files into the right destination folder based on type, rules, and simple heuristics.",
+      result:"Hours saved on manual tidying, and a Downloads folder that stays usable instead of becoming a graveyard of loose files."
+    }
+  },
+  {
+    id:"serverless",
+    emoji:"☁️",
+    title:"Serverless Web App",
+    caption:"A cloud-native web app built on serverless architecture — no servers to babysit, just code that scales.",
+    hashtags:"#Serverless #CloudComputing #CICD #Docker",
+    tech:["Serverless architecture","CI/CD","Docker","Cloud"],
+    role:"Solo build",
+    status:"Complete",
+    github:"https://github.com/Nkanyezi016",
+    demo:null,
+    comments:[
+      {who:"nkanyezi.dev", text:"Built to explore serverless patterns properly — functions that scale on demand, wired up with a CI/CD pipeline so every push ships itself."},
+      {who:"code_reviewer", text:"Great excuse to actually learn the deploy pipeline, not just the code 💯"},
+    ],
+    case:{
+      problem:"Traditional server setups mean paying for idle capacity and spending time on infrastructure instead of features.",
+      approach:"Rebuilt the app on a serverless architecture so compute scales automatically with demand, backed by a CI/CD pipeline so every change deploys itself, containerised where it matters for consistency.",
+      result:"A cloud-native app with near-zero idle cost and a deploy pipeline that removed manual release steps entirely."
+    }
+  },
+];

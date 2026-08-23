@@ -50,4 +50,25 @@ const PROJECTS = [
       approach:"Built a Java client-server architecture: the server is the single source of truth for world state and persists it via SQLite, while each client only knows what its own robot can 'see'. Object-oriented design keeps robot behaviours, obstacles, and commands cleanly separated, and the whole thing runs in Docker for consistent environments.",
       result:"A working multiplayer simulation that demonstrates solid networking, concurrency-safe state handling, and OOP architecture end to end."
     }
+  },
+{
+    id:"salon",
+    emoji:"💅",
+    title:"Salon Search & Booking",
+    caption:"Search salons, view services, and book appointments — without the back-and-forth DMs.",
+    hashtags:"#JavaScript #FullStack #UIUX #Booking",
+    tech:["JavaScript","HTML/CSS","Booking logic"],
+    role:"Solo build",
+    status:"Complete",
+    github:"https://github.com/Nkanyezi016/SalonSearchAndBooking.git",
+    demo:null,
+    comments:[
+      {who:"nkanyezi.dev", text:"Built so a user can search nearby salons, browse services and prices, and lock in a booking slot in a few taps."},
+      {who:"beta_tester", text:"Booking flow feels genuinely quick to use 👍"},
+    ],
+    case:{
+      problem:"Booking a salon appointment usually means calls, DMs, or waiting for a reply — slow for the client and hard to manage for the salon.",
+      approach:"Designed a search-and-book flow: browse salons, compare services and pricing, then reserve a slot directly, with the interface doing the work a phone call used to do.",
+      result:"A self-serve booking experience that removes the manual back-and-forth for both client and salon."
+    }
   }]

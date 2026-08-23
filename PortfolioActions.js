@@ -71,4 +71,25 @@ const PROJECTS = [
       approach:"Designed a search-and-book flow: browse salons, compare services and pricing, then reserve a slot directly, with the interface doing the work a phone call used to do.",
       result:"A self-serve booking experience that removes the manual back-and-forth for both client and salon."
     }
+  },
+{
+    id:"ridesafety",
+    emoji:"🚕",
+    title:"Ride Safety Check",
+    caption:"A quick way to verify that your Uber or Bolt driver is who the app says they are, before you get in.",
+    hashtags:"#Safety #JavaScript #API #MobileFirst",
+    tech:["JavaScript","API integration","Mobile-first design"],
+    role:"Solo build",
+    status:"In development",
+    github:"https://github.com/Nkanyezi016",
+    demo:null,
+    comments:[
+      {who:"nkanyezi.dev", text:"The goal is simple: give riders a fast, independent way to double-check driver and vehicle details before getting into the car."},
+      {who:"friend_of_dev", text:"This is such a needed idea, especially for late-night rides 🙏"},
+    ],
+    case:{
+      problem:"Ride-hailing apps show driver details, but riders have no quick, independent way to double-check that the car and driver in front of them actually match before getting in.",
+      approach:"Building a lightweight mobile-first check: enter the details shown in your ride app, and cross-reference them in a focused, no-friction interface.",
+      result:"A safety-first companion tool aimed at giving riders one extra layer of confidence on every trip."
+    }
   }]

@@ -136,3 +136,387 @@ const PROJECTS = [
     }
   },
 ];
+
+
+const STORIES = {
+  about:{
+    username:"About",
+    slides:[
+      {emoji:"👋🏽",headline:"Hi, I'm Nkanyezi.",sub:""},
+      {emoji:"📊",headline:"Mathematics & Statistics graduate",sub:"BSc in Mathematics & Mathematical Statistics."},
+      {emoji:"💻",headline:"Software Engineer in training",sub:"Turning theory into things that actually run."},
+      {emoji:"🚀",headline:"Interested in Data Engineering",sub:"Fascinated by how data moves, breaks, and gets fixed."},
+      {emoji:"🤝",headline:"Let's build something.",sub:"Say hi — I reply fast.",cta:{label:"Message me",action:"contact"}},
+    ]
+  },
+  education:{
+    username:"Education",
+    slides:[
+      {emoji:"🎓",headline:"BSc Mathematics & Mathematical Statistics",sub:""},
+      {emoji:"📈",headline:"70% overall degree average",sub:"Across the full BSc programme."},
+      {emoji:"💻",headline:"96% average in Software Engineering",sub:"The modules where math met code."},
+      {emoji:"🧭",headline:"From theorems to terminals",sub:"Turning statistical thinking into working software."},
+    ]
+  },
+  projects:{
+    username:"Projects",
+    slides:[
+      {emoji:"🛡️",headline:"Sentinel AI",sub:"Intelligent monitoring & analysis."},
+      {emoji:"🤖",headline:"Robot Worlds",sub:"Client-server robot simulation in Java."},
+      {emoji:"💅",headline:"Salon Search & Booking",sub:"Search, view, and book — instantly."},
+      {emoji:"🚕",headline:"Ride Safety Check",sub:"Verify your Uber/Bolt driver before you get in."},
+      {emoji:"🗂️",headline:"Smart Download Organizer",sub:"Your Downloads folder, auto-tidied."},
+      {emoji:"☁️",headline:"Serverless Web App",sub:"Cloud-native, CI/CD-deployed."},
+      {emoji:"⬇️",headline:"See them all below",sub:"Scroll the grid to explore every project.",cta:{label:"View projects",action:"posts"}},
+    ]
+  },
+  skills:{
+    username:"Skills",
+    slides:[
+      {emoji:"🗣️",headline:"Languages I speak (to computers)",sub:"Java · Python · HTML · JavaScript · CSS · SQL"},
+      {emoji:"⚙️",headline:"Tools & practices",sub:"Git · VS Code · CI/CD · Docker"},
+      {emoji:"🧠",headline:"How I think",sub:"Object-Oriented Programming · Problem Solving"},
+      {emoji:"➕",headline:"5+ languages.",sub:"Always learning the next one."},
+    ]
+  },
+  achievements:{
+    username:"Achievements",
+    slides:[
+      {emoji:"💻",headline:"96%",sub:"Average in Software Engineering."},
+      {emoji:"📊",headline:"70%",sub:"Overall BSc Mathematics & Statistics average."},
+      {emoji:"🚀",headline:"5+",sub:"Projects shipped, from simulations to serverless apps."},
+      {emoji:"🗣️",headline:"5+",sub:"Programming languages, and counting."},
+      {emoji:"✨",headline:"Still counting.",sub:"This is just the beginning.",cta:{label:"Get in touch",action:"contact"}},
+    ]
+  }
+};
+ 
+const BIO_PHRASES = [
+  "Software Engineer in training 💻",
+  "Mathematics & Statistics graduate 📊",
+  "Data Engineering enthusiast 🚀",
+  "Turning data into decisions",
+  "Building one commit at a time"
+];
+ 
+/* ============ TOAST ============ */
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(showToast._tm);
+  showToast._tm = setTimeout(()=>t.classList.remove('show'), 2200);
+}
+ 
+/* ============ BIO TYPEWRITER ============ */
+(function typewriter(){
+  const el = document.getElementById('bioRotating');
+  let phraseIdx = 0, charIdx = 0, deleting = false;
+  function tick(){
+    const phrase = BIO_PHRASES[phraseIdx];
+    if(!deleting){
+      charIdx++;
+      el.innerHTML = phrase.slice(0,charIdx) + '<span class="cursor">&nbsp;</span>';
+      if(charIdx === phrase.length){ deleting = true; setTimeout(tick, 1400); return; }
+    } else {
+      charIdx--;
+      el.innerHTML = phrase.slice(0,charIdx) + '<span class="cursor">&nbsp;</span>';
+      if(charIdx === 0){ deleting = false; phraseIdx = (phraseIdx+1) % BIO_PHRASES.length; }
+    }
+    setTimeout(tick, deleting ? 35 : 65);
+  }
+  tick();
+})();
+ 
+/* ============ TABS ============ */
+document.querySelectorAll('.tab').forEach(tab=>{
+  tab.addEventListener('click', ()=>{
+    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('panel-'+tab.dataset.tab).classList.add('active');
+  });
+});
+ 
+/* ============ MESSAGE BUTTON -> CONTACT ============ */
+document.getElementById('messageBtn').addEventListener('click', ()=>{
+  document.getElementById('contact').scrollIntoView({behavior:'smooth', block:'center'});
+});
+ 
+/* ============ BUILD POST CARDS ============ */
+const postsGrid = document.getElementById('postsGrid');
+PROJECTS.forEach((p, i)=>{
+  const card = document.createElement('div');
+  card.className = 'post-card';
+  card.innerHTML = `
+    <div class="post-head">
+      <div class="post-head-left">
+        <div class="post-avatar">${p.emoji}</div>
+        <span class="post-user">nkanyezi.dev</span>
+      </div>
+      <button class="post-more" data-info="${p.id}">⋮</button>
+    </div>
+    <div class="post-media" style="background:${GRADIENTS[i % GRADIENTS.length]}" data-case="${p.id}">
+      <span class="heart-burst">❤️</span>
+      <div class="post-emoji">${p.emoji}</div>
+      <div class="post-title">${p.title}</div>
+    </div>
+    <div class="post-actions">
+      <button class="like-btn" data-like="${p.id}">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 10-7.8 7.8l1 1L12 21l7.8-7.8 1-1a5.5 5.5 0 000-7.8z"/></svg>
+      </button>
+      <button data-comment="${p.id}">💬</button>
+      <button data-share="${p.id}">↗</button>
+    </div>
+    <div class="post-likes" data-likecount="${p.id}">${120 + i*17} likes</div>
+    <div class="post-caption"><b>nkanyezi.dev</b>${p.caption}</div>
+    <div class="post-hashtags">${p.hashtags}</div>
+  `;
+  postsGrid.appendChild(card);
+});
+ 
+/* ============ LIKE BUTTON ============ */
+document.addEventListener('click', (e)=>{
+  const likeBtn = e.target.closest('[data-like]');
+  if(likeBtn){
+    const id = likeBtn.dataset.like;
+    likeBtn.classList.toggle('liked');
+    const countEl = document.querySelector(`[data-likecount="${id}"]`);
+    let n = parseInt(countEl.textContent);
+    if(likeBtn.classList.contains('liked')){ n++; showToast('❤️ Liked'); }
+    else { n--; }
+    countEl.textContent = n + ' likes';
+  }
+});
+ 
+/* double-click / click image = like burst */
+document.addEventListener('click', (e)=>{
+  const media = e.target.closest('.post-media');
+  if(media && !e.target.closest('.heart-burst')){
+    // single click opens case study (handled below); trigger heart burst only on the icon area is complex,
+    // so we use dblclick for the burst instead (see listener below), keep single click for case study.
+  }
+});
+document.addEventListener('dblclick', (e)=>{
+  const media = e.target.closest('.post-media');
+  if(media){
+    const burst = media.querySelector('.heart-burst');
+    burst.classList.remove('burst'); void burst.offsetWidth; burst.classList.add('burst');
+    const id = media.dataset.case;
+    const likeBtn = document.querySelector(`[data-like="${id}"]`);
+    if(likeBtn && !likeBtn.classList.contains('liked')){ likeBtn.click(); }
+  }
+});
+ 
+/* ============ CLICK IMAGE -> CASE STUDY ============ */
+document.addEventListener('click', (e)=>{
+  const media = e.target.closest('.post-media');
+  if(media){
+    openCase(media.dataset.case);
+  }
+});
+ 
+function findProject(id){ return PROJECTS.find(p=>p.id===id); }
+ 
+function openCase(id){
+  const p = findProject(id);
+  const idx = PROJECTS.indexOf(p);
+  const box = document.getElementById('caseContent');
+  box.innerHTML = `
+    <div class="case-hero" style="background:${GRADIENTS[idx % GRADIENTS.length]}">
+      <div class="ce">${p.emoji}</div>
+      <div class="ct">${p.title}</div>
+    </div>
+    <div class="modal-content">
+      <div class="case-tags">${p.tech.map(t=>`<span class="case-tag">${t}</span>`).join('')}</div>
+      <div class="case-section-title">The problem</div>
+      <div class="case-text">${p.case.problem}</div>
+      <div class="case-section-title">The approach</div>
+      <div class="case-text">${p.case.approach}</div>
+      <div class="case-section-title">The result</div>
+      <div class="case-text">${p.case.result}</div>
+      <div class="case-links">
+        <a class="primary" href="${p.github}" target="_blank">View on GitHub</a>
+        ${p.demo ? `<a class="secondary" href="${p.demo}" target="_blank">Live demo</a>` : ''}
+      </div>
+    </div>
+  `;
+  openModal('caseModal');
+}
+ 
+/* ============ ⋮ INFO MODAL ============ */
+document.addEventListener('click', (e)=>{
+  const btn = e.target.closest('[data-info]');
+  if(btn){
+    const p = findProject(btn.dataset.info);
+    document.getElementById('infoContent').innerHTML = `
+      <div class="info-row"><span>Project</span><span>${p.title}</span></div>
+      <div class="info-row"><span>Role</span><span>${p.role}</span></div>
+      <div class="info-row"><span>Status</span><span>${p.status}</span></div>
+      <div class="info-row"><span>Tech stack</span><span>${p.tech.join(', ')}</span></div>
+      <div class="info-row"><span>Repository</span><span><a href="${p.github}" target="_blank" style="color:var(--purple);text-decoration:none;">GitHub ↗</a></span></div>
+    `;
+    openModal('infoModal');
+  }
+});
+ 
+/* ============ 💬 COMMENT MODAL ============ */
+document.addEventListener('click', (e)=>{
+  const btn = e.target.closest('[data-comment]');
+  if(btn){
+    const p = findProject(btn.dataset.comment);
+    const html = p.comments.map(c=>`
+      <div class="comment-item">
+        <div class="comment-avatar">${c.who === 'nkanyezi.dev' ? '👩🏽‍💻' : '💬'}</div>
+        <div class="comment-body">
+          <div><b>${c.who}</b><span class="comment-text">${c.text}</span></div>
+          <div class="comment-meta">${c.who === 'nkanyezi.dev' ? 'Author' : 'reviewer'}</div>
+        </div>
+      </div>
+    `).join('') + `
+      <div class="comment-input-row">
+        <span>😊</span>
+        <input type="text" placeholder="Add a comment…" disabled>
+      </div>
+    `;
+    document.getElementById('commentContent').innerHTML = html;
+    openModal('commentModal');
+  }
+});
+ 
+/* ============ ↗ SHARE MODAL ============ */
+document.addEventListener('click', (e)=>{
+  const btn = e.target.closest('[data-share]');
+  if(btn){
+    const p = findProject(btn.dataset.share);
+    document.getElementById('shareContent').innerHTML = `
+      <div class="share-option" data-open="${p.github}">
+        <div class="share-icon">🐙</div> View on GitHub
+      </div>
+      ${p.demo ? `<div class="share-option" data-open="${p.demo}"><div class="share-icon">🌐</div> Live demo</div>` : ''}
+      <div class="share-option" data-copy="${p.github}">
+        <div class="share-icon">🔗</div> Copy link
+      </div>
+    `;
+    openModal('shareModal');
+  }
+});
+document.addEventListener('click', (e)=>{
+  const openIt = e.target.closest('[data-open]');
+  if(openIt){ window.open(openIt.dataset.open, '_blank'); }
+  const copyIt = e.target.closest('[data-copy]');
+  if(copyIt){
+    navigator.clipboard?.writeText(copyIt.dataset.copy).catch(()=>{});
+    showToast('🔗 Link copied');
+    closeModal('shareModal');
+  }
+});
+ 
+/* ============ MODAL HELPERS ============ */
+function openModal(id){ document.getElementById(id).classList.add('open'); }
+function closeModal(id){ document.getElementById(id).classList.remove('open'); }
+document.querySelectorAll('.modal-overlay').forEach(ov=>{
+  ov.addEventListener('click', (e)=>{
+    if(e.target === ov || e.target.closest('[data-close]')){ ov.classList.remove('open'); }
+  });
+});
+ 
+/* ============ STORY VIEWER ============ */
+let currentStorySlides = [];
+let currentSlideIdx = 0;
+let storyTimer = null;
+const SLIDE_MS = 4200;
+ 
+function openStory(key){
+  const data = STORIES[key];
+  if(!data) return;
+  currentStorySlides = data.slides;
+  currentSlideIdx = 0;
+  document.getElementById('storyUsername').textContent = data.username;
+ 
+  const bars = document.getElementById('storyBars');
+  bars.innerHTML = currentStorySlides.map(()=>`<div class="story-bar"><div class="story-bar-fill"></div></div>`).join('');
+ 
+  const body = document.getElementById('storyBody');
+  body.querySelectorAll('.story-slide').forEach(s=>s.remove());
+  currentStorySlides.forEach((s, i)=>{
+    const div = document.createElement('div');
+    div.className = 'story-slide';
+    div.dataset.idx = i;
+    div.innerHTML = `
+      <div class="story-emoji">${s.emoji}</div>
+      <div class="story-headline">${s.headline}</div>
+      ${s.sub ? `<div class="story-sub">${s.sub}</div>` : ''}
+      ${s.cta ? `<a href="#" class="story-cta" data-cta="${s.cta.action}">${s.cta.label}</a>` : ''}
+    `;
+    body.appendChild(div);
+  });
+ 
+  document.getElementById('storyOverlay').classList.add('open');
+  showSlide(0);
+}
+ 
+function showSlide(i){
+  const bars = document.querySelectorAll('.story-bar');
+  const slides = document.querySelectorAll('.story-slide');
+  clearTimeout(storyTimer);
+ 
+  bars.forEach((b, idx)=>{
+    b.classList.remove('active','done');
+    b.querySelector('.story-bar-fill').style.transition = 'none';
+    b.querySelector('.story-bar-fill').style.width = '0%';
+    if(idx < i) b.classList.add('done');
+  });
+  slides.forEach((s, idx)=> s.classList.toggle('active', idx===i));
+ 
+  if(i >= slides.length){ closeStory(); return; }
+  currentSlideIdx = i;
+ 
+  requestAnimationFrame(()=>{
+    const activeBar = bars[i];
+    activeBar.classList.add('active');
+    const fill = activeBar.querySelector('.story-bar-fill');
+    requestAnimationFrame(()=>{
+      fill.style.transition = `width ${SLIDE_MS}ms linear`;
+      fill.style.width = '100%';
+    });
+  });
+ 
+  storyTimer = setTimeout(()=> showSlide(i+1), SLIDE_MS);
+}
+ 
+function closeStory(){
+  clearTimeout(storyTimer);
+  document.getElementById('storyOverlay').classList.remove('open');
+}
+ 
+document.getElementById('avatarOpenStory').addEventListener('click', ()=>openStory('about'));
+document.querySelectorAll('.story-item').forEach(btn=>{
+  btn.addEventListener('click', ()=>openStory(btn.dataset.story));
+});
+document.getElementById('storyClose').addEventListener('click', closeStory);
+document.getElementById('storyPrev').addEventListener('click', ()=>{
+  showSlide(Math.max(0, currentSlideIdx-1));
+});
+document.getElementById('storyNext').addEventListener('click', ()=>{
+  showSlide(currentSlideIdx+1);
+});
+document.addEventListener('keydown', (e)=>{
+  if(!document.getElementById('storyOverlay').classList.contains('open')) return;
+  if(e.key === 'Escape') closeStory();
+  if(e.key === 'ArrowLeft') showSlide(Math.max(0, currentSlideIdx-1));
+  if(e.key === 'ArrowRight') showSlide(currentSlideIdx+1);
+});
+document.addEventListener('click', (e)=>{
+  const cta = e.target.closest('[data-cta]');
+  if(cta){
+    e.preventDefault();
+    const action = cta.dataset.cta;
+    closeStory();
+    if(action === 'contact'){
+      setTimeout(()=>document.getElementById('contact').scrollIntoView({behavior:'smooth', block:'center'}), 250);
+    } else if(action === 'posts'){
+      setTimeout(()=>document.getElementById('panel-posts').scrollIntoView({behavior:'smooth', block:'start'}), 250);
+    }
+  }
+});
